@@ -1,0 +1,13 @@
+{% extends 'App1/padre.html' %}
+{% load static %}
+{% block titulo1 %}
+Manga
+{% endblock %}
+{% block titulo2 %}
+{{manga.nombre}}<br>
+Autor: {{manga.autor}}<br>
+Año de publicacion: {{manga.año}}<br>
+Numeros: {{manga.numeros}}<br>
+Estado: {{manga.estado}}<br>
+<a class="btn btn-primary" style="background-color: red;" href="{% url 'ListaManga' %}">Click aqui para volver</a>
+{% endblock %}

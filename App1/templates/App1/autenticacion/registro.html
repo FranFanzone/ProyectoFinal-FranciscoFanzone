@@ -1,0 +1,14 @@
+{% extends 'App1/padre.html' %}
+{% load static %}
+{% block titulo1 %}
+Registro
+{% endblock %}
+{% block formulario %}
+<form action="" method="POST"> {% csrf_token %}
+    <table>
+        {{miFormulario.as_table}}
+    
+    </table>
+    <input type="submit" style="background-color: red;" class="btn btn-primary"  value="Registrar">
+</form>
+{% endblock %}

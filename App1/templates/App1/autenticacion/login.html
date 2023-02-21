@@ -1,0 +1,14 @@
+{% extends 'App1/padre.html' %}
+{% load static %}
+{% block titulo1 %}
+Logg in
+{% endblock %}
+{% block titulo2 %}
+<form action="" method="POST"> {% csrf_token %}
+    <table>
+        {{formulario1.as_table}}
+    
+    </table>
+    <input type="submit" style="background-color: red;" class="btn btn-primary"  value="Iniciar sesion">
+</form>
+{% endblock %}

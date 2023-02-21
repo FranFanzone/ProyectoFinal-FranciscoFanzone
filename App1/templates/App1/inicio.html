@@ -1,0 +1,12 @@
+{% extends 'App1/padre.html' %}
+{% load static %}
+{% block titulo1 %}
+Inicio
+{% endblock %}
+{% block titulo2 %}
+{% if request.user.is_authenticated %}
+Bienvenido {{request.user}}
+{% else %}
+Bienvenidos a la pagina web!
+{% endif %}
+{% endblock %}

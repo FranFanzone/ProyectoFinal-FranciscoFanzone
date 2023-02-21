@@ -1,0 +1,14 @@
+{% extends 'App1/padre.html' %}
+{% load static %}
+{% block titulo1 %}
+Anime
+{% endblock %}
+{% block titulo2 %}
+{{anime.nombre}}<br>
+{{anime.autor}}<br>
+{{anime.estudio}}<br>
+{{anime.año}}<br>
+{{anime.capitulos}}<br>
+{{anime.estado}}<br>
+<a class="btn btn-primary" style="background-color: red;" href="{% url 'ListaAnime' %}">Click aqui para volver</a
+{% endblock %}

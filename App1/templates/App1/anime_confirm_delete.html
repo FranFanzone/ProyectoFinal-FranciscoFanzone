@@ -1,0 +1,12 @@
+{% extends 'App1/padre.html' %}
+{% load static %}
+{% block titulo1 %}
+Eliminar Anime
+{% endblock %}
+{% block titulo2 %}
+<form action="" method="POST"> {% csrf_token %}
+    <p>Estas seguro de que deseas eliminar el articulo?</p>
+    <input type="submit" style="background-color: red;" class="btn btn-primary"  value="Aceptar">
+    <a class="btn btn-primary" style="background-color: red;" href="{% url 'ListaAnime' %}">Cancelar</a>
+</form>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'App1/padre.html' %}
+{% load static %}
+{% block titulo1 %}
+Manga
+{% endblock %}
+{% block titulo2 %}
+Esta es la pagina de Manga!
+{% endblock %}
+{% block MostrarItems %} 
+{% for manga in object_list %} 
+
+Nombre:{{manga.nombre}}<br>
+Autor:{{manga.autor}}<br>
+<a class="btn btn-primary" style="background-color: red;" href="{% url 'DetalleManga' manga.id %}">Detalles del manga</a>
+{% if request.user.is_authenticated %}
+<a class="btn btn-primary" style="background-color: red;" href="{% url 'ActualizarManga' manga.id %}">Editar informacion del manga</a><br>
+{% endif %}
+{% if request.user.is_staff %}
+<a class="btn btn-primary" style="background-color: red;" href="{% url 'BorrarManga' manga.id %}">Borrar el articulo</a><br>
+{% endif %}
+
+{% endfor %}
+{% endblock %}
+
+{% block formulario %}
+<section class="features-icons bg-light text-center">
+    <div class="container">
+        <div class="row">
+                <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                    <h3><a class="btn btn-primary" style="background-color: red;" href="{% url 'CrearManga' %}">Click aqui para agregar un manga!</a></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
