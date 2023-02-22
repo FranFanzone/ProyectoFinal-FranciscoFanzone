@@ -9,6 +9,7 @@ Esta es la pagina de Animes!
 {% block MostrarItems %} 
 {% for anime in object_list %} 
 
+<img src="{{anime.imagen.url}}" width="400px"><br>
 Nombre:{{anime.nombre}}<br>
 Autor:{{anime.autor}}<br>
 <a class="btn btn-primary" style="background-color: red;" href="{% url 'DetalleAnime' anime.id %}">Detalles del anime</a>

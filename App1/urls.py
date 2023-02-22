@@ -1,6 +1,9 @@
 from django.urls import path
 from App1.views import *
 from django.contrib.auth.views import LogoutView
+from App1 import views
+
+
 
 urlpatterns = [
     path('', inicio, name='inicio'),
@@ -25,5 +28,9 @@ urlpatterns = [
     #sector registro
     path('registro/', registro, name='registro'),
     path('login/', iniciar_sesion, name='login'),
-    path('logout', LogoutView.as_view(template_name='App1/autenticacion/logout.html'), name='logout'),
+    path('logout/', LogoutView.as_view(template_name='App1/autenticacion/logout.html'), name='logout'),
+    path('editarUsuario/', editarUsuario, name='editarUsuario'),
+    #sector imagenes
+    path('SubirAvatar/', views.subirImagenAvatar, name='AgregarAvatar'),
 ]
+

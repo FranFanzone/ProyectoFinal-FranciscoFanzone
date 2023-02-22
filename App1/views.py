@@ -7,7 +7,7 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def inicio(request):
@@ -58,7 +58,57 @@ def iniciar_sesion(request):
 
     return render(request, 'App1/autenticacion/login.html', {'formulario1':miFormulario})
         
-        
+@login_required
+def subirImagenAvatar(request):
+
+    if request.method == 'POST':
+
+        miFormulario = AvatarImagenFormulario(request.POST, request.FILES)
+
+        if miFormulario.is_valid():
+
+            informacion = miFormulario.cleaned_data
+
+            avatar = AvatarImagen(usuario=request.user, imagen=informacion['imagen'])
+
+            avatar.save()
+
+            return render(request, 'App1/inicio.html')
+    else:
+        miFormulario = AvatarImagenFormulario()
+
+    return render(request, 'App1/agregarAvatar.html', {'form':miFormulario})
+
+@login_required
+def editarUsuario(request):
+
+    usuario = request.user
+
+    if request.method == 'POST':
+
+        miFormulario = EditarUsuarioFormulario(request.POST)
+
+        if miFormulario.is_valid():
+
+            info = miFormulario.cleaned_data
+
+            usuario.first_name = info['first_name']
+            usuario.last_name = info['last_name']
+            usuario.set_password(info['password1'])
+            usuario.email = info['email']
+
+            usuario.save()
+
+            return render(request, 'App1/Inicio.html')
+    else:
+        miFormulario = EditarUsuarioFormulario(initial={'first_name':usuario.first_name, 'last_name':usuario.last_name, 'email':usuario.email,})
+    
+    return render(request, 'App1/editarUsuario.html', {'form':miFormulario, 'user':usuario})
+
+
+
+
+
     
 class ListaAnime(ListView):
 
@@ -72,19 +122,18 @@ class CrearAnime(LoginRequiredMixin, CreateView):
 
     model = Anime
     success_url = '/App1/anime/list/'
-    fields = ['nombre','autor','estudio','año','capitulos','estado']
+    fields = ['nombre','autor','estudio','año','capitulos','estado','imagen']
 
 class ActualizarAnime(LoginRequiredMixin, UpdateView):
 
     model = Anime
     success_url = '/App1/anime/list'
-    fields = ['nombre','autor','estudio','año','capitulos','estado']
+    fields = ['nombre','autor','estudio','año','capitulos','estado', 'imagen']
 
 class BorrarAnime(LoginRequiredMixin, DeleteView):
 
     model = Anime
     success_url = '/App1/anime/list'
-    
 
 class ListaManga(ListView):
 
@@ -98,13 +147,13 @@ class CrearManga(LoginRequiredMixin, CreateView):
 
     model = Manga
     success_url = '/App1/manga/list/'
-    fields = ['nombre','autor','año','numeros','estado']
+    fields = ['nombre','autor','año','numeros','estado', 'imagen']
 
 class ActualizarManga(LoginRequiredMixin, UpdateView):
 
     model = Manga
     success_url = '/App1/manga/list'
-    fields = ['nombre','autor','año','numeros','estado']
+    fields = ['nombre','autor','año','numeros','estado', 'imagen']
 
 class BorrarManga(LoginRequiredMixin, DeleteView):
 
@@ -123,13 +172,13 @@ class CrearPelicula(LoginRequiredMixin, CreateView):
 
     model = Pelicula
     success_url = '/App1/pelicula/list/'
-    fields = ['nombre','autor','director','año','vistas', 'imdb']
+    fields = ['nombre','autor','director','año','vistas', 'imdb', 'imagen']
 
 class ActualizarPelicula(LoginRequiredMixin, UpdateView):
 
     model = Pelicula
     success_url = '/App1/pelicula/list'
-    fields = ['nombre','autor','director','año','vistas', 'imdb']
+    fields = ['nombre','autor','director','año','vistas', 'imdb', 'imagen']
 
 class BorrarPelicula(LoginRequiredMixin, DeleteView):
 

@@ -1,0 +1,16 @@
+{% extends 'App1/padre.html' %}
+{% load static %}
+{% block titulo1 %}
+Editar usuario
+{% endblock %}
+{% block titulo2 %}
+<form action="" method="POST"> {% csrf_token %}
+    <table>
+        {{form.as_table}}
+    
+    </table>
+    <input type="submit" style="background-color: red;" class="btn btn-primary"  value="Confirmar cambios">
+    <a class="btn btn-primary" style="background-color: red;" href="{% url 'AgregarAvatar' %}">Subir imagen de perfil</a>
+
+</form>
+{% endblock %}

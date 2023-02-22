@@ -9,6 +9,7 @@ Esta es la pagina de Manga!
 {% block MostrarItems %} 
 {% for manga in object_list %} 
 
+<img src="{{manga.imagen.url}}" width="400px"><br>
 Nombre:{{manga.nombre}}<br>
 Autor:{{manga.autor}}<br>
 <a class="btn btn-primary" style="background-color: red;" href="{% url 'DetalleManga' manga.id %}">Detalles del manga</a>

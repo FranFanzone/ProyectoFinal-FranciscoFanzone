@@ -9,12 +9,16 @@ Esta es la pagina de Peliculas!
 {% block MostrarItems %} 
 {% for pelicula in object_list %} 
 
+<img src="{{pelicula.imagen.url}}" width="400px"><br>
 Nombre:{{pelicula.nombre}}<br>
 Autor:{{pelicula.autor}}<br>
+
 <a class="btn btn-primary" style="background-color: red;" href="{% url 'DetallePelicula' pelicula.id %}">Detalles de la pelicula</a>
+
 {% if request.user.is_authenticated %}
 <a class="btn btn-primary" style="background-color: red;" href="{% url 'ActualizarPelicula' pelicula.id %}">Editar informacion del pelicula</a><br>
 {% endif %}
+
 {% if request.user.is_staff %}
 <a class="btn btn-primary" style="background-color: red;" href="{% url 'BorrarPelicula' pelicula.id %}">Borrar el articulo</a><br>
 {% endif %}

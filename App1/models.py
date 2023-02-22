@@ -9,6 +9,7 @@ class Anime(models.Model):
     año = models.DateField()
     capitulos = models.IntegerField(default=0)
     estado = models.CharField(max_length=40)
+    imagen = models.ImageField(upload_to='images', null=True, blank=True)
 
 class Manga(models.Model):
 
@@ -17,7 +18,7 @@ class Manga(models.Model):
     año = models.DateField()
     numeros = models.IntegerField(default=0)
     estado = models.CharField(max_length=40)
-    
+    imagen = models.ImageField(upload_to='images', null=True, blank=True)
 
 class Pelicula(models.Model):
 
@@ -27,6 +28,7 @@ class Pelicula(models.Model):
     año = models.DateField()
     vistas = models.IntegerField(default=0)
     imdb = models.FloatField(default=0)
+    imagen = models.ImageField(upload_to='images', null=True, blank=True) 
 
 class AvatarImagen(models.Model):
 

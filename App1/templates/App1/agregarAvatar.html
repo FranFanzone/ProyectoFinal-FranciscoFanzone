@@ -1,14 +1,14 @@
 {% extends 'App1/padre.html' %}
 {% load static %}
 {% block titulo1 %}
-Crear manga
+Agregar Avatar
 {% endblock %}
 {% block titulo2 %}
 <form action="" method="POST" enctype="multipart/form-data"> {% csrf_token %}
-    <table>
-        {{form.as_table}}
     
-    </table>
-    <input type="submit" style="background-color: red;" class="btn btn-primary"  value="Agregar">
+        {{form.as_p}}
+    
+    
+    <input type="submit" style="background-color: red;" class="btn btn-primary"  value="Subir Imagen">
 </form>
 {% endblock %}
