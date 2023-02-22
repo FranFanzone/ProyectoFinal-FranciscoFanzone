@@ -5,6 +5,8 @@ Manga
 {% endblock %}
 {% block titulo2 %}
 Esta es la pagina de Manga!
+<a class="btn btn-primary" style="background-color: red;" href="{% url 'buscarManga' %}">Buscar Manga</a>
+<a class="btn btn-primary" style="background-color: red;" href="{% url 'CrearManga' %}">Click aqui para agregar un manga!</a>
 {% endblock %}
 {% block MostrarItems %} 
 {% for manga in object_list %} 
@@ -24,14 +26,5 @@ Autor:{{manga.autor}}<br>
 {% endblock %}
 
 {% block formulario %}
-<section class="features-icons bg-light text-center">
-    <div class="container">
-        <div class="row">
-                <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-                    <h3><a class="btn btn-primary" style="background-color: red;" href="{% url 'CrearManga' %}">Click aqui para agregar un manga!</a></h3>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+
 {% endblock %}

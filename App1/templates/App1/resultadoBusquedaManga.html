@@ -1,0 +1,17 @@
+{% extends 'App1/padre.html' %}
+{% load static %}
+{% block titulo1 %}
+Buscar
+{% endblock %}
+{% block titulo2 %}
+<p>Estas buscando: {{nombre}}</p>
+
+{% for x in resultado %}
+
+<img src="{{x.imagen.url}}" width="100px"><br>
+{{x.nombre}}<br>
+{{x.autor}}<br>
+<a class="btn btn-primary" style="background-color: red;" href="{% url 'DetalleManga' x.id %}">Detalles del Manga</a>
+
+{% endfor %}
+{% endblock %}

@@ -5,6 +5,8 @@ Anime
 {% endblock %}
 {% block titulo2 %}
 Esta es la pagina de Animes!
+<a class="btn btn-primary" style="background-color: red;" href="{% url 'buscarAnime' %}">Buscar Anime</a>
+<a class="btn btn-primary" style="background-color: red;" href="{% url 'CrearAnime' %}">Click aqui para agregar un anime!</a>
 {% endblock %}
 {% block MostrarItems %} 
 {% for anime in object_list %} 
@@ -25,14 +27,4 @@ Autor:{{anime.autor}}<br>
 {% endblock %}
 
 {% block formulario %}
-<section class="features-icons bg-light text-center">
-    <div class="container">
-        <div class="row">
-                <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-                    <h3><a class="btn btn-primary" style="background-color: red;" href="{% url 'CrearAnime' %}">Click aqui para agregar un anime!</a></h3>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 {% endblock %}

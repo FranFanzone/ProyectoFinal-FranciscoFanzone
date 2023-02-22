@@ -5,6 +5,9 @@ Pelicula
 {% endblock %}
 {% block titulo2 %}
 Esta es la pagina de Peliculas!
+<a class="btn btn-primary" style="background-color: red;" href="{% url 'buscarPelicula' %}">Buscar Pelicula</a>
+<a class="btn btn-primary" style="background-color: red;" href="{% url 'CrearPelicula' %}">Click aqui para agregar una pelicula!</a>
+
 {% endblock %}
 {% block MostrarItems %} 
 {% for pelicula in object_list %} 
@@ -27,14 +30,4 @@ Autor:{{pelicula.autor}}<br>
 {% endblock %}
 
 {% block formulario %}
-<section class="features-icons bg-light text-center">
-    <div class="container">
-        <div class="row">
-                <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-                    <h3><a class="btn btn-primary" style="background-color: red;" href="{% url 'CrearPelicula' %}">Click aqui para agregar un pelicula!</a></h3>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 {% endblock %}

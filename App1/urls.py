@@ -32,5 +32,16 @@ urlpatterns = [
     path('editarUsuario/', editarUsuario, name='editarUsuario'),
     #sector imagenes
     path('SubirAvatar/', views.subirImagenAvatar, name='AgregarAvatar'),
+    #sector buscador
+    path('buscarAnime/', buscarAnime, name='buscarAnime'),
+    path('resultadoBusquedaAnime/', resultadoBusquedaAnime, name='resultadoBusquedaAnime'),
+    
+    path('buscarManga/', buscarManga, name='buscarManga'),
+    path('resultadoBusquedaManga/', resultadoBusquedaManga, name='resultadoBusquedaManga'),
+
+    path('buscarPelicula/', buscarPelicula, name='buscarPelicula'),
+    path('resultadoBusquedaPelicula/', resultadoBusquedaPelicula, name='resultadoBusquedaPelicula'),
+    #acerca de mi
+    path('acerca/', acercaDeMi, name='acerca'),
 ]
 

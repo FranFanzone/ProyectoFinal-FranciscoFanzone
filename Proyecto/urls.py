@@ -10,4 +10,6 @@ urlpatterns = [
     path('', inicio),
 ]
 
+handler404 = 'App1.views.error_404'
+
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

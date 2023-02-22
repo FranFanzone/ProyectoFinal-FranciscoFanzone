@@ -14,6 +14,55 @@ def inicio(request):
 
     return render(request, 'App1/inicio.html')
 
+#Barra de busqueda
+
+def buscarAnime(request):
+
+    return render(request, 'App1/buscarAnime.html')
+
+def resultadoBusquedaAnime(request):
+
+    if request.method == 'GET':
+
+        nombreBusqueda = request.GET['nombre']
+        animeResultado = Anime.objects.filter(nombre__icontains=nombreBusqueda)
+
+        return render(request, 'App1/resultadoBusquedaAnime.html', {'nombre':nombreBusqueda, 'resultado':animeResultado})
+
+    return render(request, 'App1/resultadoBusquedaAnime.html')
+
+def buscarManga(request):
+
+    return render(request, 'App1/buscarManga.html')
+
+def resultadoBusquedaManga(request):
+
+    if request.method == 'GET':
+
+        nombreBusqueda = request.GET['nombre']
+        mangaResultado = Manga.objects.filter(nombre__icontains=nombreBusqueda)
+
+        return render(request, 'App1/resultadoBusquedaManga.html', {'nombre':nombreBusqueda, 'resultado':mangaResultado})
+
+    return render(request, 'App1/resultadoBusquedaManga.html')
+
+def buscarPelicula(request):
+
+    return render(request, 'App1/buscarPelicula.html')
+
+def resultadoBusquedaPelicula(request):
+
+    if request.method == 'GET':
+
+        nombreBusqueda = request.GET['nombre']
+        peliculaResultado = Pelicula.objects.filter(nombre__icontains=nombreBusqueda)
+
+        return render(request, 'App1/resultadoBusquedaPelicula.html', {'nombre':nombreBusqueda, 'resultado':peliculaResultado})
+
+    return render(request, 'App1/resultadoBusquedaPelicula.html')
+
+#Crear usuario
+
 def registro(request):
 
     if request.method == 'POST':
@@ -105,11 +154,13 @@ def editarUsuario(request):
     
     return render(request, 'App1/editarUsuario.html', {'form':miFormulario, 'user':usuario})
 
+#acerca de mi
 
+def acercaDeMi(request):
 
+    return render(request, 'App1/acercaDeMi.html')
 
-
-    
+#vistas Anime, Pelis y Manga   
 class ListaAnime(ListView):
 
     model = Anime
@@ -184,4 +235,8 @@ class BorrarPelicula(LoginRequiredMixin, DeleteView):
 
     model = Pelicula
     success_url = '/App1/pelicula/list'
+
+#evitar pantalla de errores
+def error_404(request, exception):
+    return render(request,'App1/error_404.html')
 
